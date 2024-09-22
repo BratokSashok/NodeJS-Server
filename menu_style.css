@@ -1,0 +1,31 @@
+.menuDiv{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid rgb(87,87,87);
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pageList{
+    width: 100%;
+    height: 40%;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+a{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pageList a:hover{
+    background-color: blanchedalmond;
+    color: black;
+    font-weight: bolder;  
+    transition: all linear 0.1s; 
+}

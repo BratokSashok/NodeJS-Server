@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration page</title>
+    <link rel="stylesheet" href="topHeader.css">
+    <link rel="stylesheet" href="menu_style.css">
+    <link rel="stylesheet" href="menuAndContent.css">
+    <link rel="stylesheet" href="regWindowStyles.css">
+</head>
+<body>
+    <header>
+        <div class="topPageHeader"><span><a href="">Registration Page</a></span></div>
+    </header>
+    <div class="menuAndPageContent">
+        <div class="menuDiv">
+            <div class="pageList">
+                <a href="homePage.html">Homepage</a></li>
+                <a href="regPage.html">Registration</a>
+                <a href="loginPage.html">Login</a>
+                <a href="404error.html">Error</a>
+            </div>            
+        </div>
+        <div class="content">
+            <div class="regWindow">
+                <div class="allStuffForLogin">
+                        <span>Registration form</span>
+                    <form class="registrationForm">
+                        <label for="first-name">Имя:</label> <br> 
+                        <input type="text" id="first-name" name="first-name" required>
+                        <br>
+                        <label for="last-name">Фамилия:</label> <br>
+                        <input type="text" id="last-name" name="last-name" required>
+                        <br>
+                        <label for="last-name">Логин:</label> <br>
+                        <input type="text" id="last-name" name="last-name" required>
+                        <br>
+                        <label for="birth-date">Дата рождения:</label> <br>
+                        <input type="date" id="birth-date" name="birth-date" required>
+                        <br>
+                        <label for="photo">Фото:</label> <br>
+                        <input type="file" id="photo" name="photo" accept="image/*" required>
+                        <br>
+                        <label for="password">Пароль:</label> <br>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                        <label for="confirm-password">Повторить пароль:</label> <br>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                        <br>
+                        <button type="reset" class="clear">Очистить форму</button> <br>
+                        <button type="submit">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,47 @@
+.regWindow{
+    width: 425px;
+    height: 725px;
+    background-color: rgb(28,34,39);
+    border: 1px solid rgb(87,87,87);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.allStuffForLogin{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1px;
+    flex-direction: column;
+    padding-top: 3px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.allStuffForLogin span{
+    font-size: 35px;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+.registrationForm label{
+    font-size: 20px;
+    height: 15px;
+    margin: 2.5px;
+}
+.registrationForm input{
+    width: 90%;
+}
+.registrationForm button{
+    width: 65%;
+    height: 7%;
+    margin-left: 25px;
+    background-color: rgb(87, 87, 87);
+    color: white;
+
+}
+.registrationForm button:first-of-type{
+    margin-top: 50px;
+}
+.registrationForm button:last-of-type{
+    margin-top: 10px;
+}

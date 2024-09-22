@@ -1,0 +1,13 @@
+.menuAndPageContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.content{
+    width: 85%;
+    background-color: rgb(18, 18, 18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
