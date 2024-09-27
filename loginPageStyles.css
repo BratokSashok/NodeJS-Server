@@ -1,6 +1,6 @@
-.regWindow{
-    width: 425px;
-    height: 565px;
+.logWindow{
+    width: 325px;
+    height: 425px;
     background-color: rgb(28,34,39);
     border: 1px solid rgb(87,87,87);
     border-radius: 25px;
@@ -8,7 +8,7 @@
     flex-direction: column;
     padding: 5px;
 }
-.allStuffForLogin{
+.allStuffForLoginWindow{
     width: 100%;
     height: 100%;
     display: flex;
@@ -18,38 +18,41 @@
     justify-content: flex-start;
     align-items: center;
 }
-.allStuffForLogin span{
+.allStuffForLoginWindow span{
     font-size: 35px;
     margin: 5px;
-    margin-bottom: 35px;
+    margin-bottom: 55px;
     color: aliceblue;
 }
-.registrationForm label{
+.loginForm label{
     font-size: 20px;
     height: 15px;
     margin: 2.5px;
     color: aliceblue;
 }
-.registrationForm input{
-    width: 90%;
+.loginForm input{
+    width: 100%;
+    margin-bottom: 15px;
 }
-.buttonsForRegForm{
+.buttonsForLogForm{
     width: 50%;
     height: auto;
+    margin-top: 10px;
 }
-.buttonsForRegForm button{
+.buttonsForLogForm button{
     width: 100%;
     height: 35%;
     background-color: rgb(87, 87, 87);
     color: white;
+    cursor: pointer;
 }
-.buttonsForRegForm button:active{
+.buttonsForLogForm button:active{
     border: 1px solid rgb(87, 87, 87);
     background-color: black;
 }
-.buttonsForRegForm button:first-of-type{
+.buttonsForLogForm button:first-of-type{
     margin-top: 40px;
 }
-.buttonsForRegForm button:last-of-type{
+.buttonsForLogForm button:last-of-type{
     margin-top: 10px;
 }

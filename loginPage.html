@@ -5,8 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="topHeader.css">
+    <link rel="stylesheet" href="menu_style.css">
+    <link rel="stylesheet" href="menuAndContent.css">
+    <link rel="stylesheet" href="loginPageStyles.css">
 </head>
 <body>
-    <div class="login_window"></div>
+    <header>
+        <div class="topPageHeader"><span><a href="">Login Page</a></span></div>
+    </header>
+    <div class="menuAndPageContent">
+        <div class="menuDiv">
+            <div class="pageList">
+                <a href="homePage.html">Homepage</a></li>
+                <a href="regPage.html">Registration</a>
+                <a href="loginPage.html">Login</a>
+                <a href="404error.html">Error</a>
+            </div>            
+        </div>
+        <div class="content">
+            <div class="logWindow">
+                <div class="allStuffForLoginWindow">
+                        <span>Login form</span>
+                    <form class="loginForm">
+                        <label for="last-name">Логин:</label> <br>
+                        <input type="text" id="last-name" name="last-name" required>
+                        <br>
+                        <label for="password">Пароль:</label> <br>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                    </form>
+                    <div class="buttonsForLogForm">
+                        <button type="reset" class="clear">Очистить форму</button> <br>
+                        <button type="submit">Залогиниться</button>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
