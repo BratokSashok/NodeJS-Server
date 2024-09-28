@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -19,4 +20,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.home button{
+    position: fixed;
+    bottom: 15px;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+.home button:hover{
+    background-color: rgb(175, 175, 175);
+    transform: scale(1.05);
 }
