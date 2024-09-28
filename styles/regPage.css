@@ -31,25 +31,30 @@
     color: aliceblue;
 }
 .registrationForm input{
-    width: 90%;
+    width: 100%;
 }
 .buttonsForRegForm{
-    width: 50%;
-    height: auto;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
 }
 .buttonsForRegForm button{
-    width: 100%;
+    width: 50%;
     height: 35%;
     background-color: rgb(87, 87, 87);
     color: white;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+.buttonsForRegForm button:hover{
+    background-color: rgb(155, 155, 155);
+    transform: scale(1.05);
 }
 .buttonsForRegForm button:active{
     border: 1px solid rgb(87, 87, 87);
     background-color: black;
-}
-.buttonsForRegForm button:first-of-type{
-    margin-top: 40px;
-}
-.buttonsForRegForm button:last-of-type{
-    margin-top: 10px;
 }

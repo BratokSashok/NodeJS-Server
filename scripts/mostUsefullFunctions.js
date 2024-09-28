@@ -1,6 +1,6 @@
 function setRandomBackgroundImage() {
     // Путь к папке с изображениями
-    const folderPath = 'img/';
+    const folderPath = '../cats/';
     
     // Максимальное количество изображений в папке
     const maxImages = 7; // Замените на фактическое количество изображений
@@ -16,4 +16,3 @@ function setRandomBackgroundImage() {
 }
 // Вызов функции при загрузке страницы
 window.onload = setRandomBackgroundImage;
-

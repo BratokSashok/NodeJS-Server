@@ -21,13 +21,13 @@
 .allStuffForLoginWindow span{
     font-size: 35px;
     margin: 5px;
-    margin-bottom: 55px;
+    margin-bottom: 65px;
     color: aliceblue;
 }
 .loginForm label{
     font-size: 20px;
     height: 15px;
-    margin: 2.5px;
+    margin: 3px;
     color: aliceblue;
 }
 .loginForm input{
@@ -35,9 +35,11 @@
     margin-bottom: 15px;
 }
 .buttonsForLogForm{
-    width: 50%;
-    height: auto;
-    margin-top: 10px;
+    width: 100%;
+    height: 65%;
+    margin-top: 45px;
+    display: flex;
+    gap: 15px;
 }
 .buttonsForLogForm button{
     width: 100%;
@@ -45,14 +47,13 @@
     background-color: rgb(87, 87, 87);
     color: white;
     cursor: pointer;
+    transition: all linear 0.2s;
+}
+.buttonsForLogForm button:hover{
+    background-color: rgb(155, 155, 155);
+    transform: scale(1.05);
 }
 .buttonsForLogForm button:active{
     border: 1px solid rgb(87, 87, 87);
     background-color: black;
-}
-.buttonsForLogForm button:first-of-type{
-    margin-top: 40px;
-}
-.buttonsForLogForm button:last-of-type{
-    margin-top: 10px;
 }

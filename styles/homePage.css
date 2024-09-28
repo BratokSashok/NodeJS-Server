@@ -15,4 +15,8 @@
     font-family: monospace;
     text-decoration: underline;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
