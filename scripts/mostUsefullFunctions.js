@@ -3,7 +3,7 @@ let useCatFolder = true;
         function setRandomBackgroundImage() {
             // Путь к папке с изображениями и максимальное количество изображений
             const folderPath = useCatFolder ? '../cats/' : '../memes/';
-            const maxImages = useCatFolder ? 28 : 10; // Замените на фактическое количество изображений в папках
+            const maxImages = useCatFolder ? 30 : 25; // Замените на фактическое количество изображений в папках
 
             // Генерация случайного числа от 1 до maxImages
             const randomNumber = Math.floor(Math.random() * maxImages) + 1;
