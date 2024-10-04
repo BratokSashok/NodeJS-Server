@@ -27,23 +27,23 @@
             <div class="logWindow">
                 <div class="allStuffForLoginWindow">
                         <span>Login form</span>
-                    <form class="loginForm" onsubmit="return validateLoginForm()">
-                        <label for="last-name">Логин:</label> <br>
-                        <input type="text" id="last-name" name="last-name" required>
-                        <br>
-                        <label for="password">Пароль:</label> <br>
-                        <input type="password" id="password" name="password" required>
-                        <br>
-                        <div class="buttonsForLogForm">
-                            <button type="reset" class="clear">Очистить форму</button> <br>
-                            <button type="submit">Залогиниться</button>
-                        </div>
-                    </form>
+                        <form class="loginForm" onsubmit="return validateLoginForm()">
+                            <label for="login"> <b>Логин</b> или <b>Email</b>:</label> <br>
+                            <input type="text" id="login" name="login" required>
+                            <br>
+                            <label for="password"> <b>Пароль</b>:</label> <br>
+                            <input type="password" id="password" name="password" required>
+                            <br>
+                            <div class="buttonsForLogForm">
+                                <button type="reset" class="clear">Очистить форму</button> <br>
+                                <button type="submit">Залогиниться</button>
+                            </div>
+                        </form>
                 </div>
                 <br>
             </div>
         </div>
     </div>
 </body>
-    <script src="../scripts/validationPassword.js"></script>
+    <script src="../scripts/validation.js"></script>
 </html>

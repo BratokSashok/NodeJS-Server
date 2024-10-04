@@ -1,3 +1,4 @@
+ /*
         //GET и POST запросы на чистом JavaScript
     // GET запрос с использованием Fetch API
 fetch('https://jsonplaceholder.typicode.com/posts/1')
@@ -44,3 +45,4 @@ axios.post('https://jsonplaceholder.typicode.com/posts', {
 })
 .then(response => console.log(response.data))
 .catch(error => console.error('Ошибка:', error));
+*/

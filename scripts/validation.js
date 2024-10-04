@@ -23,18 +23,25 @@ function validatePassword() {
     }
     return true;
 }
-
 function validateLoginForm() {
     const login = document.getElementById('login').value;
     const password = document.getElementById('password').value;
     const minLength = 8;
     const hasNumber = /\d/;
     const hasUpperCase = /[A-Z]/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Валидация логина
-    if (login.length < 3) {
-        alert('Логин должен быть не менее 3 символов.');
-        return false;
+    // Валидация логина или email
+    if (login.includes('@')) {
+        if (!validateEmail(login)) {
+            alert('Почта введена некорректно.');
+            return false;
+        }
+    } else {
+        if (login.length < 3) {
+            alert('Логин должен быть не менее 3 символов.');
+            return false;
+        }
     }
 
     // Валидация пароля
@@ -52,4 +59,9 @@ function validateLoginForm() {
     }
 
     return true;
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
 }
