@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/src/controllers/public/styles/topHeader.css">
+    <link rel="stylesheet" href="/src/controllers/public/styles/loginPageStyles.css">
+    <link rel="stylesheet" href="/src/controllers/public/styles/menuAndContent.css">
+    <link rel="stylesheet" href="/src/controllers/public/styles/homePage.css">
+</head>
+<body>
+    <header>
+        <div class="topPageHeader"><span><a href="/">Homepage</a></span></div>
+    </header>
+    <div class="menuAndPageContent">
+        <div class="menuDiv">
+            <div class="pageList">
+                <a href="/">Homepage</a>
+                <a href="/src/newFolder/public/html/regPage.html">Registration</a>
+                <a href="/src/newFolder/public/html/loginPage.html">Login</a>
+                <a href="/src/newFolder/public/html/404error.html">Error</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="home" id="homeID">
+                <h1>
+                    You are at home!
+                    <a href="/src/newFolder/public/html/secretPage.html" style="width: 5px; height: 5px; border-radius: 25px;"></a> <!--Cats' Secret-->
+                </h1>
+                <button id="toggleButton" onclick="toggleFolder()">Switch to Memes</button>
+            </div>
+        </div>
+    </div>
+    <script src="/src/newFolder/public/scripts/mostUsefullFunctions.js"></script>
+</body>
+</html>
