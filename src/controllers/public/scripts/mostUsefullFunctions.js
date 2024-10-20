@@ -33,4 +33,3 @@ let useCatFolder = true;
             button.textContent = useCatFolder ? 'Switch to Memes' : 'Switch to Cats';
             setRandomBackgroundImage();
         };
-        
