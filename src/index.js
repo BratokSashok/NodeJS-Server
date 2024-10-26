@@ -1,16 +1,34 @@
 const express = require('express');
+const app = express();
+const handlebars = require('express-handlebars');
+const hbs = require('hbs');
 const path = require('path');
+const { title } = require('process');
 const hostname = '127.0.0.1';
 const port = 3000;
-const app = express();
 
-// Обслуживание статических файлов
-app.use(express.static(path.join(__dirname, 'controllers', 'public', 'styles')));
-app.use(express.static(path.join(__dirname, 'controllers', 'public', 'scripts')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Маршрут для главной страницы
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'controllers', 'public', 'html', 'homePage.html'));
+app.engine('hbs', handlebars.engine({
+    layoutsDir: 'views/layouts',
+    defaultLayout: 'layout',
+    extname: '.hbs'
+}));
+
+// Настройка шаблонизатора
+app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + "/views/partials");
+
+app.use("/contact.test", function(request, response) {
+    response.render("contact", {
+        title: "my contacts",
+        email: "gavgag@mycorp.com",
+        phone: "+12341231"
+    });
+});
+
+app.use("/", function(request, response) {
+    response.render("home", { title: 'Home Page' });
 });
 
 app.listen(port, hostname, () => {

@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-basics",
+  "version": "1.0.0",
+  "description": "basics; first app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node.js",
+    "tasks"
+  ],
+  "author": "Alex",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.21.1",
+    "express-handlebars": "^8.0.1",
+    "hbs": "^4.2.0"
+  }
+}
