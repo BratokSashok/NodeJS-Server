@@ -8,3 +8,5 @@ My NodeJS server
     COPYPASTE = DUMBASS
     
 - Alex, creator of his NODEJS Server.
+
+P.S. All stuff is located in "src" folder.
