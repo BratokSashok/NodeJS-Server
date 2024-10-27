@@ -1,0 +1,100 @@
+<div class="content">
+    <div class="regWindow">
+        <div class="allStuffForLogin">
+                <span>Registration form</span>
+            <form class="registrationForm" onsubmit="return validatePassword()">
+                <label for="first-name">Имя:</label> <br> 
+                <input type="text" id="first-name" name="first-name" required>
+                <br>
+                <label for="last-name">Фамилия:</label> <br>
+                <input type="text" id="last-name" name="last-name" required>
+                <br>
+                <label for="login">Логин:</label> <br>
+                <input type="text" id="login" name="login" required>
+                <br>
+                <label for="email">Email:</label> <br>
+                <input type="email" id="email" name="email" required>
+                <label for="birth-date">Дата рождения:</label> <br>
+                <input type="date" id="birth-date" name="birth-date" required>
+                <br>
+                <label for="photo">Фото:</label> <br>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+                <br>
+                <label for="password">Пароль:</label> <br>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <label for="confirm-password">Повторить пароль:</label> <br>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <div class="buttonsForRegForm">
+                    <button type="reset" class="clear">Очистить форму</button> <br>
+                    <button type="submit">Зарегистрироваться</button>
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
+</div>
+
+<style>
+.regWindow{
+    width: 425px;
+    height: 565px;
+    background-color: rgb(28,34,39);
+    border: 1px solid rgb(87,87,87);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.allStuffForLogin{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1px;
+    flex-direction: column;
+    padding-top: 3px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.allStuffForLogin span{
+    font-size: 35px;
+    margin: 5px;
+    margin-bottom: 35px;
+    color: aliceblue;
+}
+.registrationForm label{
+    font-size: 20px;
+    height: 15px;
+    margin: 2.5px;
+    color: aliceblue;
+}
+.registrationForm input{
+    width: 100%;
+}
+.buttonsForRegForm{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+.buttonsForRegForm button{
+    width: 50%;
+    height: 35%;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+.buttonsForRegForm button:hover{
+    background-color: rgb(155, 155, 155);
+    transform: scale(1.05);
+}
+.buttonsForRegForm button:active{
+    border: 1px solid rgb(87, 87, 87);
+    background-color: black;
+}
+
+</style>

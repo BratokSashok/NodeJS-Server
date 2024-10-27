@@ -1,0 +1,81 @@
+<div class="content">
+    <div class="logWindow">
+        <div class="allStuffForLoginWindow">
+            <span>Login form</span>
+            <form class="loginForm" onsubmit="return validateLoginForm()">
+                <label for="login"> <b>Логин</b> или <b>Email</b>:</label> <br>
+                <input type="text" id="login" name="login" required>
+                <br>
+                <label for="password"> <b>Пароль</b>:</label> <br>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <div class="buttonsForLogForm">
+                    <button type="reset" class="clear">Очистить форму</button> <br>
+                    <button type="submit">Залогиниться</button>
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
+</div>
+<style>
+.logWindow{
+    width: 325px;
+    height: 425px;
+    background-color: rgb(28,34,39);
+    border: 1px solid rgb(87,87,87);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.allStuffForLoginWindow{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1px;
+    flex-direction: column;
+    padding-top: 3px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.allStuffForLoginWindow span{
+    font-size: 35px;
+    margin: 5px;
+    margin-bottom: 65px;
+    color: aliceblue;
+}
+.loginForm label{
+    font-size: 20px;
+    height: 15px;
+    margin: 3px;
+    color: aliceblue;
+}
+.loginForm input{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.buttonsForLogForm{
+    width: 100%;
+    height: 65%;
+    margin-top: 45px;
+    display: flex;
+    gap: 15px;
+}
+.buttonsForLogForm button{
+    width: 100%;
+    height: 35%;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+.buttonsForLogForm button:hover{
+    background-color: rgb(155, 155, 155);
+    transform: scale(1.05);
+}
+.buttonsForLogForm button:active{
+    border: 1px solid rgb(87, 87, 87);
+    background-color: black;
+}
+</style>

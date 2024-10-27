@@ -74,20 +74,7 @@ app.use("/login", function(request, response){
     response.render("login");
 })
 */
-/*
-app.use("/contact.test", function(request, response) {
-    response.render("contact", {
-        title: "my contacts",
-        email: "gavgag@mycorp.com",
-        phone: "+12341231"
-    });
-});
-*/
-/*
-app.use("/", function(request, response) {
-    response.render("main", { title: 'Home Page' });
-});
-*/
+
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
