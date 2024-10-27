@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html lang="en"> 
     <head>
-        <title>{{{title}}}</title>
         <meta charset="utf-8" />
-        {{> header}}
+        <title>{{{title}}}</title>
     </head>
     <body>
-        {{> menu}}
-       
-        {{{body}}}
-        
+        <header>
+        {{> header}}
+        </header>
+        <div class="menuAndPageContent">
+            {{> menu}}
+            {{{body}}}
+    </div>
+        <footer>
         {{> footer}}
+        </footer>
     </body>
 </html>
-
+<style>
+    *{
+    box-sizing: border-box;
+    }
+    html,body{
+    padding: 0;
+    margin: 0;
+    height: 97.3%;
+    width: 100%;
+    background-color: rgb(18, 18, 18);
+    }
+    .menuAndPageContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    }
+    .content{
+    width: 85%;
+    background-color: rgb(18, 18, 18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+</style>

@@ -1,45 +1,46 @@
 <nav>
-    <div class="home">
-    <a href="/">Homepage</a>
-    <a href="/regPage">Registration</a>
-    <a href="/logpage">Login</a>
+    <div class="menuDiv">
+        <div class="pageList">
+            <a href="/">Homepage</a>
+            <a href="/registration">Registration</a>
+            <a href="/login">Login</a>
+        </div>
     </div>
 </nav>
-{{!<style>
-    .home{
+
+<style>
+nav{
+    width: 15%;
+}
+.menuDiv{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid rgb(87,87,87);
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background-repeat: no-repeat;
-    background-position: center;
-    *{
-    box-sizing: border-box;
+    justify-content: center;
 }
-    html,body{
+.pageList{
+    width: 100%;
+    height: 40%;
     padding: 0;
-    margin: 0;
-    height: 97.3%;
-    width: 100%;
-    background-color: rgb(18, 18, 18);
-    }
-    .topPageHeader{
-    width: 100%;
-    height: 50px;
+    margin-top: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgb(87,87,87);
-    }
-    span{
-    font-size: 25px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    a{
-    text-decoration: none;
-    color: white;
-    }
+    flex-direction: column;
+    justify-content: space-between;
 }
-</style>}}
+a{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pageList a:hover{
+    background-color: blanchedalmond;
+    color: black;
+    font-weight: bolder;  
+    transition: all linear 0.1s; 
+}
+</style>

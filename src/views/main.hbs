@@ -1,0 +1,75 @@
+<div class="content">
+    <div class="home" id="homeID">
+        <h1>
+            You are at home!
+            <a href="/secret" style="width: 5px; height: 5px; border-radius: 25px;"></a> <!--Cats' Secret-->
+        </h1>
+        <button id="toggleButton" onclick="toggleFolder()">Switch to Memes</button>
+    </div>
+</div>
+<script>
+    let useCatFolder = true;
+
+    async function setRandomBackgroundImage() {
+        const response = await fetch('/random-background');
+        const imageUrl = response.url;
+        const element = document.getElementById('homeID');
+        if (element) {
+            element.style.backgroundImage = `url(${imageUrl})`;
+        }
+    }
+
+    async function toggleFolder() {
+        const response = await fetch('/toggle-folder');
+        const data = await response.json();
+        useCatFolder = data.useCatFolder;
+        document.getElementById('toggleButton').textContent = useCatFolder ? 'Switch to Memes' : 'Switch to Cats';
+        localStorage.setItem('useCatFolder', useCatFolder);
+        setRandomBackgroundImage();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedFolderPreference = localStorage.getItem('useCatFolder');
+        if (savedFolderPreference !== null) {
+            useCatFolder = savedFolderPreference === 'true';
+        }
+        document.getElementById('toggleButton').textContent = useCatFolder ? 'Switch to Memes' : 'Switch to Cats';
+        setRandomBackgroundImage();
+    });
+</script>
+<style>
+.home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.home h1{
+    color: #fef5e6;
+    font-weight: bolder;
+    font-style:oblique;
+    font-family: monospace;
+    text-decoration: underline;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.home button{
+    position: fixed;
+    bottom: 15px;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+.home button:hover{
+    background-color: rgb(175, 175, 175);
+    transform: scale(1.05);
+}
+</style>

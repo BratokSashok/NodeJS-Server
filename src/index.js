@@ -4,6 +4,7 @@ const handlebars = require('express-handlebars');
 const hbs = require('hbs');
 const path = require('path');
 const { title } = require('process');
+
 const hostname = '127.0.0.1';
 const port = 3000;
 
@@ -15,10 +16,65 @@ app.engine('hbs', handlebars.engine({
     extname: '.hbs'
 }));
 
+
+// КОД КНОПКИ > //
+
+let useCatFolder = true;
+
+function setRandomBackgroundImage() {
+    const folderPath = useCatFolder ? 'public/cats/' : 'public/memes/';
+    const maxImages = useCatFolder ? 29 : 26;
+    const randomNumber = Math.floor(Math.random() * maxImages) + 1;
+    const selectedImage = useCatFolder ? `Cat${randomNumber}.jpg` : `Meme${randomNumber}.jpg`;
+    return path.join(folderPath, selectedImage);
+}
+
+function toggleFolder() {
+    useCatFolder = !useCatFolder;
+    const backgroundImage = setRandomBackgroundImage();
+    return { useCatFolder, backgroundImage };
+}
+
+app.get('/toggle-folder', (req, res) => {
+    const result = toggleFolder();
+    res.json(result);
+});
+
+app.get('/random-background', (req, res) => {
+    const backgroundImage = setRandomBackgroundImage();
+    res.sendFile(path.join(__dirname, backgroundImage));
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+ 
+// < КОД КНОПКИ //
+
 // Настройка шаблонизатора
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + "/views/partials");
 
+app.get('/', (req, res) => {
+    res.render('main', { title: 'HomePage' });
+});
+
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'Login Page' });
+});
+
+app.get('/registration', (req, res) => {
+    res.render('registration', { title: 'Registration Page' });
+});
+
+app.get('/secret', (req, res) => {
+    res.render('secret', { title: 'SECRETS' });
+});
+
+/*
+app.use("/login", function(request, response){
+    response.render("login");
+})
+*/
+/*
 app.use("/contact.test", function(request, response) {
     response.render("contact", {
         title: "my contacts",
@@ -26,11 +82,12 @@ app.use("/contact.test", function(request, response) {
         phone: "+12341231"
     });
 });
-
+*/
+/*
 app.use("/", function(request, response) {
-    response.render("home", { title: 'Home Page' });
+    response.render("main", { title: 'Home Page' });
 });
-
+*/
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
