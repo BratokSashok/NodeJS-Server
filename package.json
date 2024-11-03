@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "похуй": "node rofl.js"
+    "rofl": "node rofl.js"
   },
   "keywords": [
     "node.js",

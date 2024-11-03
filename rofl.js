@@ -21,10 +21,10 @@ const deleteContents = (folderPath) => {
 
 const projectRoot = path.resolve(__dirname);
 
-rl.question('Проебали? (да/нет): ', (answer) => {
-  if (answer.toLowerCase() === 'да') {
+rl.question('Проебали?: ', (answer) => {
+  if (answer.toLowerCase() === 'похуй') {
     deleteContents(projectRoot);
-    console.log('НУ ЛАДНО, ЕСЛИ ТЕРЯТЬ ТАК СРАЗУ ВСЁ!1!1!!!11!!');
+    console.log('НУ ЛАДНО, ЕСЛИ ТЕРЯТЬ ТАК ВСЁ СРАЗУ!!1!!1!!11!!');
   } else {
     console.log('Ссыкло.');
   }
