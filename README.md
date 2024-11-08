@@ -10,3 +10,6 @@ My NodeJS server
 - Alex, creator of his NODEJS Server.
 
 ***P.S. All stuff is located in "src" folder.***
+
+## **WARNING**
+### TO START USE 'npm start' IN ROOT FOLDER (NodeJS-Server) 
