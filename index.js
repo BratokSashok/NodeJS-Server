@@ -8,10 +8,10 @@ const { title } = require('process');
 const hostname = '127.0.0.1';
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src', 'public')));
 
 app.engine('hbs', handlebars.engine({
-    layoutsDir: 'views/layouts',
+    layoutsDir: 'src/views/layouts',
     defaultLayout: 'layout',
     extname: '.hbs'
 }));
@@ -22,7 +22,7 @@ app.engine('hbs', handlebars.engine({
 let useCatFolder = true;
 
 function setRandomBackgroundImage() {
-    const folderPath = useCatFolder ? 'public/cats/' : 'public/memes/';
+    const folderPath = useCatFolder ? 'src/public/cats/' : 'src/public/memes/';
     const maxImages = useCatFolder ? 29 : 26;
     const randomNumber = Math.floor(Math.random() * maxImages) + 1;
     const selectedImage = useCatFolder ? `Cat${randomNumber}.jpg` : `Meme${randomNumber}.jpg`;
@@ -45,13 +45,15 @@ app.get('/random-background', (req, res) => {
     res.sendFile(path.join(__dirname, backgroundImage));
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src', 'public')));
  
 // < КОД КНОПКИ //
 
 // Настройка шаблонизатора
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + "/views/partials");
+hbs.registerPartials(path.join(__dirname, 'src/views/partials'));
+
 
 app.get('/', (req, res) => {
     res.render('main', { title: 'HomePage' });
@@ -73,12 +75,6 @@ app.get('/secret', (req, res) => {
 app.use((req, res, next) => {
     res.status(404).render('page404', { title: 'Page Not Found' });
 });
-
-/*
-app.use("/login", function(request, response){
-    response.render("login");
-})
-*/
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
