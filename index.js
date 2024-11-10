@@ -4,9 +4,13 @@ const handlebars = require('express-handlebars');
 const hbs = require('hbs');
 const path = require('path');
 const { title } = require('process');
+const passport = require('./src/middleware/passport'); // Подключаем файл с конфигурацией passport
+const session = require('express-session');
 
 const hostname = '127.0.0.1';
 const port = 3000;
+
+const users = require('./src/middleware/users'); // Подключаем файл с пользователями
 
 app.use(express.static(path.join(__dirname, 'src', 'public')));
 
@@ -16,6 +20,20 @@ app.engine('hbs', handlebars.engine({
     extname: '.hbs'
 }));
 
+// Настройка парсинга тела запроса
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Настройка сессий
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false
+}));
+
+// Инициализация passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // КОД КНОПКИ > //
 
@@ -45,7 +63,7 @@ app.get('/random-background', (req, res) => {
     res.sendFile(path.join(__dirname, backgroundImage));
 });
 
-app.use(express.static(path.join(__dirname, 'src', 'public')));
+app.use(express.static(path.join(__dirname, 'src/public')));
  
 // < КОД КНОПКИ //
 
@@ -53,6 +71,25 @@ app.use(express.static(path.join(__dirname, 'src', 'public')));
 app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'src/views/partials'));
+
+// Маршруты для логина и регистрации
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/main',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
+
+app.post('/register', (req, res) => {
+    try {
+        const { username, password, firstName, lastName, email } = req.body;
+        // Добавляем нового пользователя в массив users
+        users.push({ id: users.length + 1, username, password, firstName, lastName, email });
+        res.redirect('/login');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Ошибка на сервере');
+    }
+});
 
 
 app.get('/', (req, res) => {
