@@ -3,9 +3,13 @@ const app = express();
 const handlebars = require('express-handlebars');
 const hbs = require('hbs');
 const path = require('path');
-const { title } = require('process');
 const passport = require('./src/middleware/passport'); // Подключаем файл с конфигурацией passport
 const session = require('express-session');
+const flash = require('connect-flash'); // Подключаем connect-flash
+
+const bodyParser = require('body-parser');
+const { adminAuth, generateNewPassword } = require(path.join(__dirname, 'src', 'middleware', 'adminAuth'));
+const loginAndRegistrationRoutes = require('./src/middleware/LoginAndRegistration'); // Подключаем новый файл маршрутов
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -21,8 +25,8 @@ app.engine('hbs', handlebars.engine({
 }));
 
 // Настройка парсинга тела запроса
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Настройка сессий
 app.use(session({
@@ -31,9 +35,14 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(flash()); // Подключаем connect-flash
+
 // Инициализация passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Подключение маршрутов для логина и регистрации
+app.use('/', loginAndRegistrationRoutes);
 
 // КОД КНОПКИ > //
 
@@ -64,7 +73,7 @@ app.get('/random-background', (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'src/public')));
- 
+
 // < КОД КНОПКИ //
 
 // Настройка шаблонизатора
@@ -72,38 +81,39 @@ app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'src/views/partials'));
 
-// Маршруты для логина и регистрации
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/main',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
-
-app.post('/register', (req, res) => {
-    try {
-        const { username, password, firstName, lastName, email } = req.body;
-        // Добавляем нового пользователя в массив users
-        users.push({ id: users.length + 1, username, password, firstName, lastName, email });
-        res.redirect('/login');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Ошибка на сервере');
-    }
+// Маршрут для административного входа
+app.post('/admin-login', adminAuth, (req, res) => {
+    generateNewPassword(); // Генерация нового пароля после входа
+    res.redirect('/admin-profile'); // Перенаправление на страницу профиля администратора
 });
 
+// Маршрут для профиля администратора
+app.get('/admin-profile', (req, res) => {
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    res.render('adminProfile', { title: 'Admin Profile', adminPassword });
+});
 
+// Маршрут для списка пользователей
+app.get('/users', (req, res) => {
+    res.render('users', { title: 'User List', users });
+});
+
+// Главная страница
 app.get('/', (req, res) => {
     res.render('main', { title: 'HomePage' });
 });
 
+// Страница логина
 app.get('/login', (req, res) => {
-    res.render('login', { title: 'Login Page' });
+    res.render('login', { title: 'Login Page', message: req.flash('error') });
 });
 
+// Страница регистрации
 app.get('/registration', (req, res) => {
     res.render('registration', { title: 'Registration Page' });
 });
 
+// Секретная страница
 app.get('/secret', (req, res) => {
     res.render('secret', { title: 'SECRETS' });
 });

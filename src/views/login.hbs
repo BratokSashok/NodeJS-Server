@@ -2,6 +2,9 @@
     <div class="logWindow">
         <div class="allStuffForLoginWindow">
             <span>Login form</span>
+            {{#if message}}
+                <p style="color: red;">{{message}}</p>
+            {{/if}}
             <form class="loginForm" action="/login" method="post" onsubmit="return validateLoginForm()">
                 <label for="login"> <b>Логин</b></label> <br>
                 <input type="text" id="login" name="username" required>
