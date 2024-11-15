@@ -15,7 +15,16 @@ const adminAuth = (req, res, next) => {
 const generateNewPassword = () => {
   const newPassword = crypto.randomBytes(16).toString('hex');
   process.env.ADMIN_PASSWORD = newPassword;
-  fs.writeFileSync(path.resolve(__dirname, '../../.env'), `ADMIN_USERNAME=${process.env.ADMIN_USERNAME}\nADMIN_PASSWORD=${newPassword}`); // Указываем путь к .env на уровень выше
+
+  // Чтение содержимого файла .env
+  const envPath = path.resolve(__dirname, '../../.env');
+  const envFileContent = fs.readFileSync(envPath, 'utf8');
+
+  // Замена строки с паролем
+  const updatedEnvFileContent = envFileContent.replace(/ADMIN_PASSWORD=.*/i, `ADMIN_PASSWORD=${newPassword}`);
+
+  // Запись обратно в файл .env
+  fs.writeFileSync(envPath, updatedEnvFileContent);
 };
 
 module.exports = { adminAuth, generateNewPassword };
