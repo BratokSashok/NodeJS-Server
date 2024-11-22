@@ -1,26 +1,29 @@
 const express = require('express');
-const exphbs = require('express-handlebars').engine;
-const path = require('path');
-const bodyParser = require('body-parser');
-require('dotenv').config();
-
-const sequelize = require('../config/database.config');
-const viewRoutes = require('./routes/index');
-const apiRoutes = require('./api/users');
-
 const app = express();
- 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(express.json()); 
+const handlebars = require('express-handlebars');
+const hbs = require('hbs');
+const path = require('path');
+const passport = require('./src/middleware/passport'); // Подключаем файл с конфигурацией passport
+const session = require('express-session');
+const flash = require('connect-flash'); // Подключаем connect-flash
+const sequelize = require('./src/config/database.config');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') }); // Подключаем dotenv
+const bodyParser = require('body-parser');
+const { adminAuth, generateNewPassword } = require(path.join(__dirname, 'src', 'middleware', 'adminAuth'));
+const loginAndRegistrationRoutes = require('./src/middleware/LoginAndRegistration'); // Подключаем новый файл маршрутов
+const { setupButtonRoutes } = require('./src/middleware/buttonHandler'); // Подключаем обработчик кнопки
+const userRoutes = require('./src/routes/userRoutes'); // Подключаем маршруты для аутентификации
+const adminRoutes = require('./src/routes/adminRoutes'); // Подключаем маршруты для администратора
 
-app.engine('hbs', exphbs({
-     extname: 'hbs', 
-     defaultLayout: 'main', 
-     layoutsDir: path.join(__dirname, 'views/layouts') 
-    }));
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+const hostname = process.env.HOSTNAME || '127.0.0.1';
+const port = process.env.PORT || '3000';
+
+app.use(express.static(path.join(__dirname, 'src', 'public')));
+app.engine('hbs', handlebars.engine({
+    layoutsDir: 'src/views/layouts',
+    defaultLayout: 'layout',
+    extname: '.hbs'
+}));
 
 sequelize.sync() 
   .then(() => { 
@@ -29,15 +32,35 @@ sequelize.sync()
   .catch((err) => { 
     console.error('Error creating database:', err); 
   });
+// Настройка парсинга тела запроса
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// Настройка сессий
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your_secret_key',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash()); // Подключаем connect-flash
 
-app.use('/', viewRoutes); 
-app.use('/api', apiRoutes);
+// Инициализация passport
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.use((req, res, next) => {
-    res.status(404).render('404', { title: '404 - Page Not Found' });
-});
+// Подключение маршрутов для логина и регистрации
+app.use('/', loginAndRegistrationRoutes);
+// Настройка маршрутов для кнопки
+setupButtonRoutes(app); 
+// Подключение маршрутов для аутентификации
+app.use('/', userRoutes);
+// Подключение маршрутов для администратора
+app.use('/', adminRoutes);
+// Настройка шаблонизатора
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+
+app.set('views', path.join(__dirname, 'src/views'));
+app.set('view engine', 'hbs');
+hbs.registerPartials(path.join(__dirname, 'src/views/partials'));
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
