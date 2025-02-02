@@ -1,5 +1,5 @@
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') }); // Указываем путь к .env на уровень выше
+//require('dotenv').config({ path: path.resolve(__dirname, '../../.env') }); // Указываем путь к .env на уровень выше
 const crypto = require('crypto');
 const fs = require('fs');
 

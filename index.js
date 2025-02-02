@@ -6,8 +6,8 @@ const path = require('path');
 const passport = require('./src/middleware/passport'); // Подключаем файл с конфигурацией passport
 const session = require('express-session');
 const flash = require('connect-flash'); // Подключаем connect-flash
-const sequelize = require('./src/config/database.config');
-require('dotenv').config({ path: path.resolve(__dirname, '.env') }); // Подключаем dotenv
+//const sequelize = require('./src/config/database.config');
+//require('dotenv').config({ path: path.resolve(__dirname, '.env') }); // Подключаем dotenv
 const bodyParser = require('body-parser');
 const { adminAuth, generateNewPassword } = require(path.join(__dirname, 'src', 'middleware', 'adminAuth'));
 const loginAndRegistrationRoutes = require('./src/middleware/LoginAndRegistration'); // Подключаем новый файл маршрутов
@@ -25,6 +25,7 @@ app.engine('hbs', handlebars.engine({
     extname: '.hbs'
 }));
 
+/*
 sequelize.sync() 
   .then(() => { 
     console.log('Database & tables created!'); 
@@ -32,6 +33,7 @@ sequelize.sync()
   .catch((err) => { 
     console.error('Error creating database:', err); 
   });
+*/
 // Настройка парсинга тела запроса
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

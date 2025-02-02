@@ -1,5 +1,5 @@
-const { MsSqlDialect } = require('@sequelize/mssql');
-const { Sequelize } = require('sequelize');
+//const { MsSqlDialect } = require('@sequelize/mssql');
+//const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
 const sequelize = new Sequelize(

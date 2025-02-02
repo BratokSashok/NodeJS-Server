@@ -1,48 +1,41 @@
- /*
-        //GET и POST запросы на чистом JavaScript
-    // GET запрос с использованием Fetch API
-fetch('https://jsonplaceholder.typicode.com/posts/1')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Ошибка:', error));
+//zadanie 1:
 
-    // POST запрос с использованием Fetch API
-// Пример POST запроса
-fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        title: 'foo',
-        body: 'bar',
-        userId: 1
-    })
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Ошибка:', error));
+// const fs = require("fs");
 
+// const readStream = fs.createReadStream("myfile.txt", "utf-8");
 
-        // GET и POST запросы с использованием Axios
+// readStream.on("data", (chunk) => {
+//     console.log(chunk); 
+// });
 
-    // GET запрос с использованием Axios
+// readStream.on("end", () => {
+//     console.log("Чтение файла завершено.");
+// });
 
-// Подключение Axios через CDN
-// <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-// Пример GET запроса
-axios.get('https://jsonplaceholder.typicode.com/posts/1')
-.then(response => console.log(response.data))
-.catch(error => console.error('Ошибка:', error));
+// readStream.on("error", (error) => {
+//     console.error("Ошибка при чтении файла:", error.message);
+// });
 
-    // POST запрос с использованием Axios
-    
-// Пример POST запроса
-axios.post('https://jsonplaceholder.typicode.com/posts', {
-    title: 'foo',
-    body: 'bar',
-    userId: 1
-})
-.then(response => console.log(response.data))
-.catch(error => console.error('Ошибка:', error));
-*/
+// zadanie 2:
+
+const fs = require("fs");
+
+const readStream = fs.createReadStream("myfile.txt", "utf-8");
+const writeStream = fs.createWriteStream("destination.txt");
+
+readStream.on("data", (chunk) => {
+    writeStream.write(chunk); // Записываем каждый кусок данных
+});
+
+readStream.on("end", () => {
+    writeStream.end(); // Завершаем запись
+    console.log("Данные успешно записаны в destination.txt");
+});
+
+readStream.on("error", (error) => {
+    console.error("Ошибка при чтении файла:", error.message);
+});
+
+writeStream.on("error", (error) => {
+    console.error("Ошибка при записи файла:", error.message);
+});
